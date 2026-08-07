@@ -2,7 +2,7 @@ package br.edu.ifgoiano.edu.alunos;
 
 public class Medidor {
 
-    private String medidor;
+    private String tipoDeMedidor;
     private String enderecoMac;
     private double valorConsumido;
     private double valorIngetado;
@@ -12,31 +12,41 @@ public class Medidor {
     private final double Tmaximo = 250;
 
 
-    public Medidor(String enderecoMac, String medidor){
+    public Medidor(String enderecoMac, String tipoDeMedidor){
         this.enderecoMac = enderecoMac;
-        this.medidor = medidor;
+        this.tipoDeMedidor = tipoDeMedidor;
         this.tensoes = new double[
-                medidor.equals("trifasico") ? 3 :
-                medidor.equals("bifasico") ? 2 : 1
+                tipoDeMedidor.equals("trifasico") ? 3 :
+                tipoDeMedidor.equals("bifasico") ? 2 : 1
                 ];
 
     }
 
     public void setTensao(int fase, double voltagem){
-        String nome = "Continua Amanhã, testando";
-        //Ainda Não terminado
+       if (fase >= tensoes.length){
+           System.out.println("Fase Inválida.");
+       }else if (voltagem < Tminio || voltagem > Tmaximo){
+           System.out.println("Tensão bloqueada:" + voltagem + "V");
+       }
+       tensoes[fase] = voltagem;
     }
 
     public void registrarConsumo(double kwh){
-        //Ainda Não terminado
+        if (kwh > 0){
+            valorConsumido += kwh;
+        }else{
+            System.out.println("Erro: Valor Inválido");
+        }
     }
 
     public void registrarInjecao(double kwh){
-        //Ainda Não terminado
+        if (kwh > 0){
+            valorIngetado += kwh;
+        }
     }
 
     public String getMedidor() {
-        return medidor;
+        return tipoDeMedidor;
     }
 
     public String getEnderecoMac() {
@@ -47,15 +57,11 @@ public class Medidor {
         return valorIngetado;
     }
 
-    public void setValorIngetado(double valorIngetado) {
-        this.valorIngetado = valorIngetado;
-    }
-
     public double getValorConsumido() {
         return valorConsumido;
     }
 
-    public void setValorConsumido(double valorConsumido) {
-        this.valorConsumido = valorConsumido;
+    public double[] getTensoes() {
+        return tensoes;
     }
 }

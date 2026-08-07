@@ -3,37 +3,28 @@ package br.edu.ifgoiano.edu.alunos;
 public class Consumidor {
 
     private String nome;
-    private String cpf;
-    private String cnpj;
+    private String documento;
+    private Medidor medidor;
 
-    public Consumidor(String nome, String cpf, String cnpj){
+    public Consumidor(String nome, String documento, Medidor medidor) {
         this.nome = nome;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
+        this.documento = documento;
+        this.medidor = medidor;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+
+    public String getDocumento() {
+        return documento;
     }
 
-    public String getCpf() {
-        return cpf;
+    public Medidor getMedidor() {
+        return medidor;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
 
 }
