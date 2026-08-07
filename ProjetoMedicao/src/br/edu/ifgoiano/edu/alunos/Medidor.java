@@ -8,7 +8,8 @@ public class Medidor {
     private double valorIngetado;
     private double [] tensoes;
 
-    private final double Tminio = 90, Tmaximo = 250;
+    private final double Tminio = 90;
+    private final double Tmaximo = 250;
 
 
     public Medidor(String enderecoMac, String medidor){
@@ -18,9 +19,11 @@ public class Medidor {
                 medidor.equals("trifasico") ? 3 :
                 medidor.equals("bifasico") ? 2 : 1
                 ];
+
     }
 
-    public void setTensao(int fase, double v){
+    public void setTensao(int fase, double voltagem){
+        String nome = "Continua Amanhã, testando";
         //Ainda Não terminado
     }
 
