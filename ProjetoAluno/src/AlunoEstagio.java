@@ -27,4 +27,12 @@ public class AlunoEstagio extends Aluno {
         }
         getStatus();
     }
+
+    public double getBolsa() {
+        return bolsa;
+    }
+
+    public void setBolsa(double bolsa) {
+        this.bolsa = bolsa;
+    }
 }
