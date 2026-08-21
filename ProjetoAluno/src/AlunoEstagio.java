@@ -1,4 +1,4 @@
-public class AlunoEstagio extends Aluno {
+public class AlunoEstagio extends Aluno implements RecebedorBolsa {
     private double bolsa;
 
     public AlunoEstagio(String nome, double dinheiro, int energia, double bolsa){
@@ -11,7 +11,19 @@ public class AlunoEstagio extends Aluno {
         linha();
         this.setEnergia(this.getEnergia()-40);
         System.out.println(this.getNome() + " terminou o trabalho!");
-        this.setDinheiro(this.getDinheiro() + this.bolsa);
+        processarPagamentoBolsa();
+    }
+
+    @Override
+    public void processarPagamentoBolsa() {
+        linha();
+        if (this.getBolsa() > 0){
+            this.setDinheiro(this.getDinheiro() + this.bolsa);
+
+            System.out.println("O Pagamento da bolsa no valor de R$ " + this.bolsa);
+        }else{
+            System.out.println("Valor da Bolsa Não Recebido, por isso não passou");
+        }
         getStatus();
     }
 
@@ -35,4 +47,6 @@ public class AlunoEstagio extends Aluno {
     public void setBolsa(double bolsa) {
         this.bolsa = bolsa;
     }
+
+
 }

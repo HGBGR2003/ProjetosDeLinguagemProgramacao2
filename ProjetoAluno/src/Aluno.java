@@ -1,17 +1,8 @@
-public class Aluno {
+public abstract class Aluno {
 
     private int energia;
     private double dinheiro;
     private String nome;
-
-    public Aluno(String nome) {
-        this.nome = nome;
-        this.energia = 100;
-        this.dinheiro = 200;
-        linha();
-        System.out.println("Novo aluno matriculado!");
-        getStatus();
-    }
 
     public Aluno(String nome, double dinheiro, int energia) {
         this.nome = nome;
@@ -57,17 +48,7 @@ public class Aluno {
         getStatus();
     }
 
-    public void estudar() {
-        linha();
-        if (this.energia > 30) {
-            this.energia -= 30;
-            System.out.println(this.nome + " estudou!");
-        } else {
-            this.energia = 0;
-            System.out.println("GAME OVER!");
-        }
-        getStatus();
-    }
+    public abstract void estudar();
 
     public String getNome() {
         return this.nome;
