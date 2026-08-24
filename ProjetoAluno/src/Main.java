@@ -1,3 +1,10 @@
+/**
+ * Classe principal de teste para a simulação "UNIVERSITÁRIO PERRENGUE SIMULATOR",
+ * instanciando e executando as ações dos diferentes tipos de alunos.
+ *
+ * @author Henrique Gabriel Barbosa Guida Rodrigues
+ * @version 1.0
+ */
 
 void main() {
     System.out.println("UNIVERSITÁRIO PERRENGUE SIMULATOR");
