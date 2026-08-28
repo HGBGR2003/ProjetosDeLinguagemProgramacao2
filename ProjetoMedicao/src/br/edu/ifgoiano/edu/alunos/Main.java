@@ -7,38 +7,36 @@ package br.edu.ifgoiano.edu.alunos;
  * @version 1.0
  */
 public class Main {
-
-     /**
-      * Construtor padrão da classe Main.
-      */
-     public Main() {
-     }
-
-     /**
-      * Ponto de entrada do programa. Cria instâncias de {@link Medidor} e {@link Consumidor},
-      * realizando testes de consumo, injeção e registros de tensão.
-      *
-      * @param args Argumentos da linha de comando (não utilizados).
-      */
      public static void main(String[] args) {
-          Medidor medidor = new Medidor("00:1A:2B:3C:4D:4E", "bifásico");
+          System.out.println("=================================================");
+          System.out.println("     SISTEMA DE GESTÃO DE SMART GRID (POO 1)     ");
+          System.out.println("=================================================\n");
 
-          medidor.registrarConsumo(10.5);
-          // medidor.registrarConsumo(-3); // Irá dar erro, pois o consumo não pode ser negativo!
+          MedidorInteligente medidor1 = new MedidorInteligente("00:1A:2B:3C:4D:01", 220.0);
 
-          medidor.setTensao(0, 220);
-          medidor.setTensao(1, 210);
-          // medidor.setTensao(2, 290); // Passou do limite que está entre 90V a 250V.
+          MedidorInteligente medidor2 = new MedidorInteligente("00:1A:2B:3C:4D:02");
 
-          medidor.registrarInjecao(3.2);
+          Consumidor consumidor1 = new Consumidor("Carlos Silva", "111.222.333-44", medidor1);
+          Consumidor consumidor2 = new Consumidor("Ana Clara", "555.666.777-88", medidor2);
 
-          Consumidor consumidor = new Consumidor("Henrique Gabriel Barbosa Guida Rodrigues", "6627595724", medidor);
+          medidor1.registrarConsumo(280);
+          medidor1.registrarInjecaoSolar(80);
 
-          System.out.println("Consumidor: " + consumidor.getNome());
-          System.out.println("Documento: " + consumidor.getDocumento());
-          System.out.println("MAC: " + medidor.getEnderecoMac());
-          System.out.println("Tipo Medidor: " + medidor.getMedidor());
-          System.out.println("Consumo: " + medidor.getValorConsumido() + " kWh");
-          System.out.println("Injeção: " + medidor.getValorIngetado() + " kWh");
+          medidor2.registrarConsumo(150);
+          medidor2.registrarInjecaoSolar(320);
+
+          System.out.println("-- Validando o Sistema --");
+          medidor1.registrarConsumo(-15);
+          medidor1.registrarConsumo(0);
+          medidor1.setTensaoRede(275);
+
+
+          //Rede no valor Padrão
+          medidor1.setTensaoRede(220);
+          System.out.println("---------------------------\n");
+
+          System.out.println("--- EMISSÃO DE FATURAS ---");
+          consumidor1.exibirRelatorioConsolidado();
+          consumidor2.exibirRelatorioConsolidado();
      }
 }
